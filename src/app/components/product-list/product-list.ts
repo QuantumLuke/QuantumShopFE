@@ -1,0 +1,36 @@
+import { Component, Input } from '@angular/core';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
+import {Product} from '../../models/product';
+
+@Component({
+  selector: 'app-product-list',
+  standalone: true,
+  imports: [CommonModule, NgOptimizedImage],
+  templateUrl: './product-list.html',
+  styleUrl: './product-list.css'
+})
+export class ProductList {
+  @Input() products: Product[] = [
+    {
+      id: 1,
+      name: 'Product A',
+      brand: 'Brand X',
+      price: 29.99,
+      inventory: 15,
+      description: 'Description for Product A',
+      category: { id: 1, name: 'Category 1' },
+      image: []
+    },
+    {
+      id: 2,
+      name: 'Product B',
+      brand: 'Brand Y',
+      price: 59.99,
+      inventory: 30,
+      description: 'Description for Product B',
+      category: { id: 2, name: 'Category 2' },
+      image: []
+    }
+    // Add more mock products as needed
+  ];
+}
