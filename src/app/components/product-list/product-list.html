@@ -2,7 +2,7 @@
   <h2>Product List</h2>
   <div *ngFor="let product of products" class="product-card">
     <h3>{{ product.name }} ({{ product.brand }})</h3>
-    <p><strong>Category:</strong> {{ product.category?.name }}</p>
+    <p><strong>Category:</strong> {{ product.category.name }}</p>
     <p><strong>Price:</strong> ${{ product.price }}</p>
     <p><strong>In Stock:</strong> {{ product.inventory }}</p>
     <p>{{ product.description }}</p>

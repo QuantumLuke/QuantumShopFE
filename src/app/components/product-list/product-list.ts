@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
-import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {Product} from '../../models/product';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage],
+  imports: [CommonModule],
   templateUrl: './product-list.html',
   styleUrl: './product-list.css'
 })

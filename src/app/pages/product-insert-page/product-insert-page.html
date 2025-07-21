@@ -1,0 +1,35 @@
+<div>
+  <button type="button" (click)="returnToProductPage()">Return to Product List</button>
+
+  <h1>Insert Product</h1>
+  <form [formGroup]="productForm" (ngSubmit)="submit()">
+    <label>
+      Name:
+      <input formControlName="name"/>
+    </label>
+    <label>
+      Brand:
+      <input formControlName="brand"/>
+    </label>
+    <label>
+      Price:
+      <input type="number" formControlName="price"/>
+    </label>
+    <label>
+      Inventory:
+      <input type="number" formControlName="inventory"/>
+    </label>
+    <label>
+      Description:
+      <textarea formControlName="description"></textarea>
+    </label>
+    <label>
+      Category:
+      <select formControlName="category">
+        <option *ngFor="let cat of categories" [ngValue]="cat">{{ cat.name }}</option>
+      </select>
+    </label>
+    <!-- Add image handling as needed -->
+    <button type="submit" [disabled]="productForm.invalid">Insert Product</button>
+  </form>
+</div>
