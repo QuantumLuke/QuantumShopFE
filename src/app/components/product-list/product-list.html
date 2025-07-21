@@ -7,7 +7,7 @@
               <p><strong>Price:</strong> ${{ product.price }}</p>
               <p><strong>In Stock:</strong> {{ product.inventory }}</p>
               <p>{{ product.description }}</p>
-              @if (product.image?.length && product.name) {
+              @if (product.image.length && product.name) {
                   @let productName = product.name;
                   @for (image of product.image; track image.id) {
                       <img

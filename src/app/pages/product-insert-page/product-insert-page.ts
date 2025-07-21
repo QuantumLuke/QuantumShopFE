@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Category, Product} from '../../models/product';
-import {NgForOf} from '@angular/common';
 import {ProductService} from '../../services/product-service';
 import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-insert-page',
   imports: [
-    ReactiveFormsModule,
-    NgForOf
+    ReactiveFormsModule
   ],
   templateUrl: './product-insert-page.html',
   styleUrl: './product-insert-page.css'
