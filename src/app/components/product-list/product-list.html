@@ -1,18 +1,22 @@
 <div class="product-list">
   <h2>Product List</h2>
-  <div *ngFor="let product of products" class="product-card">
-    <h3>{{ product.name }} ({{ product.brand }})</h3>
-    <p><strong>Category:</strong> {{ product.category.name }}</p>
-    <p><strong>Price:</strong> ${{ product.price }}</p>
-    <p><strong>In Stock:</strong> {{ product.inventory }}</p>
-    <p>{{ product.description }}</p>
-    <div *ngIf="product.image?.length">
-        <ng-container *ngIf="product.name as productName">
-            <img
-                    *ngFor="let productImage of product.image"
-                    [src]="'http://localhost:8080' + productImage.downloadUrl"
-                    [alt]="productName"
-                    class="product-img"/>
-        </ng-container>    </div>
-  </div>
+      @for (product of products; track product.id) {
+          <div class="product-card">
+              <h3>{{ product.name }} ({{ product.brand }})</h3>
+              <p><strong>Category:</strong> {{ product.category.name }}</p>
+              <p><strong>Price:</strong> ${{ product.price }}</p>
+              <p><strong>In Stock:</strong> {{ product.inventory }}</p>
+              <p>{{ product.description }}</p>
+              @if (product.image?.length && product.name) {
+                  @let productName = product.name;
+                  @for (image of product.image; track image.id) {
+                      <img
+                              [src]="imageBaseUrl + image.downloadUrl"
+                              [alt]="productName"
+                              class="product-img"
+                      />
+                  }
+              }
+          </div>
+      }
 </div>

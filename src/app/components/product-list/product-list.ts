@@ -31,6 +31,8 @@ export class ProductList {
       category: { id: 2, name: 'Category 2' },
       image: []
     }
-    // Add more mock products as needed
+
   ];
+
+  public imageBaseUrl = 'http://localhost:8080';
 }
