@@ -19,7 +19,7 @@ export class ProductPage implements OnInit {
 
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe(
-      products => this.products = products
+      response => this.products = response.data
     );
 
 

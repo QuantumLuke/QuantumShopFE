@@ -1,9 +1,5 @@
 import {Image} from './image';
-
-export interface Category {
-  id: number;
-  name: string;
-}
+import {Category} from './category';
 
 export interface Product {
   id: number;

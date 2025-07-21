@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {Category, Product} from '../../models/product';
+import {Product} from '../../models/product';
 import {ProductService} from '../../services/product-service';
 import {Router} from '@angular/router';
+import {Category} from '../../models/category';
+import {CategoryService} from '../../services/category-service';
 
 @Component({
   selector: 'app-product-insert-page',
@@ -12,14 +14,14 @@ import {Router} from '@angular/router';
   templateUrl: './product-insert-page.html',
   styleUrl: './product-insert-page.css'
 })
-export class ProductInsertPage {
+export class ProductInsertPage implements OnInit{
   productForm: FormGroup;
   categories: Category[] = [
     { id: 1, name: 'Electronics' },
     { id: 2, name: 'Clothing' },
   ];
 
-  constructor(private fb: FormBuilder, private productService: ProductService, private router: Router) {
+  constructor(private fb: FormBuilder, private productService: ProductService, private router: Router, private categoryService: CategoryService) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
       brand: ['', Validators.required],
@@ -29,6 +31,14 @@ export class ProductInsertPage {
       category: [null, Validators.required],
       image: [[]]
     });
+  }
+
+  ngOnInit(): void {
+    this.loadCategories()
+  }
+
+  loadCategories(): void{
+    this.categoryService.getAllCategories().subscribe((response) => (this.categories = response.data))
   }
 
   submit() {

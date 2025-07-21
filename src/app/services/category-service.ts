@@ -1,23 +1,17 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map, Observable} from 'rxjs';
-import {Product} from '../models/product';
+import {Category} from '../models/category';
 import {ApiResponse} from '../response/api-response';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
-  private baseUrl = 'http://localhost:8080/api/v1/products/';
+export class CategoryService {
+  private baseUrl = 'http://localhost:8080/api/v1/categories/';
   constructor(private http: HttpClient) {}
 
-  getAllProducts(): Observable<ApiResponse> {
+  getAllCategories(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.baseUrl + 'all');
   }
-
-  insertProduct(product: Product): Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(this.baseUrl + 'add', product);
-  }
-
-
-  }
+}

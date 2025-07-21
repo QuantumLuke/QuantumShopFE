@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {LoginRequest} from '../request/login-request';
+import {ApiResponse} from '../response/api-response';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,9 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  login(request: LoginRequest): Observable<any> {
+  login(request: LoginRequest): Observable<ApiResponse> {
     const url = this.baseUrl + 'auth/login';
 
-    return this.http.post(url, request);
+    return this.http.post<ApiResponse>(url, request);
   }
 }

@@ -26,10 +26,11 @@
     <label>
       Category:
       <select formControlName="category">
-        <option *ngFor="let cat of categories" [ngValue]="cat">{{ cat.name }}</option>
+        @for (cat of categories; track cat.id){
+          <option [ngValue]="cat">{{ cat.name }}</option>
+        }
       </select>
     </label>
-    <!-- Add image handling as needed -->
     <button type="submit" [disabled]="productForm.invalid">Insert Product</button>
   </form>
 </div>
